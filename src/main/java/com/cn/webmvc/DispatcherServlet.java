@@ -5,8 +5,6 @@ import com.cn.webmvc.adapter.SimpleHandleMappingAdapter;
 import com.cn.webmvc.controller.Controller;
 import com.cn.webmvc.handler.SimpleHandlerMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.HandlerAdapter;
-import org.springframework.web.servlet.HandlerExecutionChain;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
