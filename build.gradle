@@ -1,77 +1,112 @@
-plugins {
-    id 'java'
+//plugins {
+//    id 'java'
+//}
+//
+//group 'com.cn.webmvc'
+//version '1.0-SNAPSHOT'
+//
+//sourceCompatibility = 1.8
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//dependencies {
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+//    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.0'
+////    compileOnly("org.projectlombok:lombok")
+////    compile("org.projectlombok:lombok")
+//    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+//    compile group: 'com.alibaba', name: 'druid', version: '1.1.20'
+//    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+//    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+//
+//    compile group: 'org.springframework', name: 'spring-core', version: '5.0.5.RELEASE'
+//    compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RELEASE'
+//    compile group: 'org.springframework', name: 'spring-web', version: '5.0.5.RELEASE'
+//    compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.5.RELEASE'
+//    // https://mvnrepository.com/artifact/org.springframework/spring-test
+//    compile group: 'org.springframework', name: 'spring-test', version: '5.0.5.RELEASE'
+//    // https://mvnrepository.com/artifact/org.springframework/spring-oxm
+//    compile group: 'org.springframework', name: 'spring-oxm', version: '5.0.16.RELEASE'
+//
+//
+//    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+//    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+//    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.2-b02'
+//    // https://mvnrepository.com/artifact/javax.servlet/jstl
+//    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+//// https://mvnrepository.com/artifact/org.freemarker/freemarker
+//    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
+//// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+//// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+//    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.11.0'
+//// https://mvnrepository.com/artifact/org.apache.poi/poi
+//    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+//// https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+//    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
+//// https://mvnrepository.com/artifact/org.apache.tiles/tiles-api
+//    compile group: 'org.apache.tiles', name: 'tiles-api', version: '3.0.8'
+//// https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet
+//    compile group: 'org.apache.tiles', name: 'tiles-servlet', version: '3.0.8'
+//// https://mvnrepository.com/artifact/org.webjars/webjars-locator-core
+//    compile group: 'org.webjars', name: 'webjars-locator-core', version: '0.37'
+//// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+//// https://mvnrepository.com/artifact/javax.el/javax.el-api
+//    compile group: 'javax.el', name: 'javax.el-api', version: '3.0-b08'
+//// https://mvnrepository.com/artifact/org.apache.tiles/tiles-el
+//    compile group: 'org.apache.tiles', name: 'tiles-el', version: '3.0.8'
+//// https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras
+//    compile group: 'org.apache.tiles', name: 'tiles-extras', version: '3.0.8'
+//// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+//// https://mvnrepository.com/artifact/com.github.librepdf/openpdf
+//    compile group: 'com.github.librepdf', name: 'openpdf', version: '1.0.5'
+//// https://mvnrepository.com/artifact/com.rometools/rome
+//    compile group: 'com.rometools', name: 'rome', version: '1.12.0'
+//// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-smile
+//    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: '2.9.9'
+//// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+//    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.17'
+//// https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-reactivestreams
+//    compile group: 'androidx.lifecycle', name: 'lifecycle-reactivestreams', version: '2.1.0'
+//// https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams
+//    compile group: 'org.reactivestreams', name: 'reactive-streams', version: '1.0.2'
+//
+//
+//}
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
-group 'com.cn.webmvc'
-version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
 
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+configurations {
+    providedRuntime
+}
+
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.0'
-//    compileOnly("org.projectlombok:lombok")
-//    compile("org.projectlombok:lombok")
-    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
-    compile group: 'com.alibaba', name: 'druid', version: '1.1.20'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
-
-    compile group: 'org.springframework', name: 'spring-core', version: '5.0.5.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version: '5.0.5.RELEASE'
-    compile group: 'org.springframework', name: 'spring-web', version: '5.0.5.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.5.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework/spring-test
-    compile group: 'org.springframework', name: 'spring-test', version: '5.0.5.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework/spring-oxm
-    compile group: 'org.springframework', name: 'spring-oxm', version: '5.0.16.RELEASE'
-
-
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.2-b02'
-    // https://mvnrepository.com/artifact/javax.servlet/jstl
-    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
-// https://mvnrepository.com/artifact/org.freemarker/freemarker
-    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.11.0'
-// https://mvnrepository.com/artifact/org.apache.poi/poi
-    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
-// https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
-// https://mvnrepository.com/artifact/org.apache.tiles/tiles-api
-    compile group: 'org.apache.tiles', name: 'tiles-api', version: '3.0.8'
-// https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet
-    compile group: 'org.apache.tiles', name: 'tiles-servlet', version: '3.0.8'
-// https://mvnrepository.com/artifact/org.webjars/webjars-locator-core
-    compile group: 'org.webjars', name: 'webjars-locator-core', version: '0.37'
-// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
-// https://mvnrepository.com/artifact/javax.el/javax.el-api
-    compile group: 'javax.el', name: 'javax.el-api', version: '3.0-b08'
-// https://mvnrepository.com/artifact/org.apache.tiles/tiles-el
-    compile group: 'org.apache.tiles', name: 'tiles-el', version: '3.0.8'
-// https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras
-    compile group: 'org.apache.tiles', name: 'tiles-extras', version: '3.0.8'
-// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
-// https://mvnrepository.com/artifact/com.github.librepdf/openpdf
-    compile group: 'com.github.librepdf', name: 'openpdf', version: '1.0.5'
-// https://mvnrepository.com/artifact/com.rometools/rome
-    compile group: 'com.rometools', name: 'rome', version: '1.12.0'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-smile
-    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: '2.9.9'
-// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
-    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.17'
-// https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-reactivestreams
-    compile group: 'androidx.lifecycle', name: 'lifecycle-reactivestreams', version: '2.1.0'
-// https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams
-    compile group: 'org.reactivestreams', name: 'reactive-streams', version: '1.0.2'
-
 }

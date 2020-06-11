@@ -1,11 +1,9 @@
 package com.cn.webmvc.handler;
 
+import com.cn.webmvc.HandlerExecutionChain;
 import com.cn.webmvc.HandlerMapping;
 import com.cn.webmvc.controller.Controller;
-import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.HandlerExecutionChain;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -46,7 +44,7 @@ public class SimpleHandlerMapping implements HandlerMapping {
             RequestMapping methodAnnotation = method.getAnnotation(RequestMapping.class);
             String methodPath = methodAnnotation.value()[0];
             if (methodPath.startsWith("/")) {
-                methodPath = methodPath.substring(0);
+                methodPath = methodPath.substring(1);
             }
             handlerMap.put(controllerPath + methodPath, controller);
         }

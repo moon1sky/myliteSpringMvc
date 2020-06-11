@@ -39,11 +39,18 @@ public class SimpleHandleMappingAdapter implements HandleMappingAdapter {
 
 
         Map<String, String[]> parameterMap = request.getParameterMap();
+        if(parameterMap!=null){
+
+        }
         //TODO
 
         Object modleAndView=null;
         try {
-            modleAndView = method.invoke(handle, parameterMap);
+            if(parameterMap!=null && !parameterMap.isEmpty()){
+                modleAndView = method.invoke(handle,parameterMap);
+            }else{
+                modleAndView = method.invoke(handle);
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -72,7 +79,7 @@ public class SimpleHandleMappingAdapter implements HandleMappingAdapter {
             RequestMapping methodAnnotation = method.getAnnotation(RequestMapping.class);
             String methodPath = methodAnnotation.value()[0];
             if (methodPath.startsWith("/")) {
-                methodPath = methodPath.substring(0);
+                methodPath = methodPath.substring(1);
             }
             methodMap.put(controllerPath + methodPath, method);
         }

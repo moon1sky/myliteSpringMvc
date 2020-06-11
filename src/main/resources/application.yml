@@ -1,0 +1,10 @@
+server:
+  port: 8089
+  context-path: /
+
+spring:
+  application:
+    name: webmvc
+
+logging:
+    path: ./logs/webmvc
